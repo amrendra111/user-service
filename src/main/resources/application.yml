@@ -1,0 +1,29 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/user_data?allowPublicKeyRetrieval=true&useSSL=false
+    username: root
+    password: localpassword@2023
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  sql:
+    init:
+      mode: always
+      
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update 
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: test-group-id
+      auto-offset-reset: earliest
+      key-deserializer:
+        org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer:
+        org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer:
+       org.apache.kafka.common.serialization.StringSerializer
+      value-serializer:
+        org.apache.kafka.common.serialization.StringSerializer
